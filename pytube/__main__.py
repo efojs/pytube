@@ -271,6 +271,8 @@ class YouTube:
 
         :rtype: List[Caption]
         """
+        if "captions" not in self.vid_info:
+            self.bypass_age_gate()
         raw_tracks = (
             self.vid_info.get("captions", {})
             .get("playerCaptionsTracklistRenderer", {})
